@@ -23,6 +23,7 @@
 </template>
 
 <script>
+	//https://www.npmjs.com/package/vue-image-crop-upload
 	import myUpload from 'vue-image-crop-upload';
     export default {
     	props:{
