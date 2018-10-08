@@ -11,12 +11,18 @@ const tagsViews = {
 			console.log(state.visitedViews)
 		},
 		DEL_TAG:(state, view)=>{
-			for (const [i, v] of state.visitedViews.entries()){
-				if(v.path===view.path){
+			for (const [i,v] of state.visitedViews.entries()){
+				if(v.path === view.path){
 					state.visitedViews.splice(i,1)
-		          	break
+					break
 				}
 			}
+//			for (const [i, v] of state.visitedViews.entries()){
+//				if(v.path===view.path){
+//					state.visitedViews.splice(i,1)
+//		          	break
+//				}
+//			}
 		}
 	},
 	actions:{

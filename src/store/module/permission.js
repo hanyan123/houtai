@@ -12,7 +12,6 @@ function hasPermission(roles,route) {
     return true
   }
 }
-
 /**
  * 递归过滤异步路由表，返回符合用户角色权限的路由表
  * @param permission
@@ -44,28 +43,31 @@ const permissions = {
   },
   actions: {
   	GenerateRoutes({ commit }, data) {
-      return new Promise(resolve => {
-        const { roles } = data
-        let accessedRouters
-        if (roles.indexOf('admin') >= 0) {
-          accessedRouters = pemissionRouter
-        } else {
-          accessedRouters = filterAsyncRouter(pemissionRouter, roles)
-        }
-        commit('SET_ROUTERS', accessedRouters)
-        resolve()
-      })
-    }
-//  GenerateRoutes(res,data) {
+  		return new Promise(resolve => {
+  			const { roles } = data;
+  			let accessedRouters;
+  			if(roles.indexOf('admin')>0){
+  				accessedRouters = pemissionRouter
+  			} else {
+  				accessedRouters = filterAsyncRouter(pemissionRouter, roles)
+  			}
+  			commit('SET_ROUTERS',accessedRouters);
+  			resolve();
+  		})
+
+//    return new Promise(resolve => {
+//      const { roles } = data
 //      let accessedRouters
-//      let { roles } =data 
 //      if (roles.indexOf('admin') >= 0) {
-//        accessedRouters = permission
+//        accessedRouters = pemissionRouter
 //      } else {
-//        accessedRouters = filterAsyncRouter(permission, roles)
+//        accessedRouters = filterAsyncRouter(pemissionRouter, roles)
 //      }
-//      res.commit('SET_ROUTERS', accessedRouters)      
-//  }
+//      commit('SET_ROUTERS', accessedRouters)
+//      resolve()
+//    })
+    }
+
   }
 }
 

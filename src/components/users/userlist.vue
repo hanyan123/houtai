@@ -32,7 +32,6 @@
 	        v-model="modalShow"
 	        :closable="false"
 	        @on-ok="changeOk"
-        	
 	        >
 	        <Form :model="formItem" :label-width="80" title="我的资料">
 		        <FormItem label="ID">
