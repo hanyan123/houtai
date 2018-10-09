@@ -347,7 +347,7 @@
             onSelectionChange (selection){
             	for(var i = 0;i< this.data4.length;i++){
             		for(var j = 0;j< selection.length;j++){
-            			if(this.data1[i].name==selection[j].name){
+            			if(this.data4[i].name==selection[j].name){
             				console.log(i)
             			}
             		}

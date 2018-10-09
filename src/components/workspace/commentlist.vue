@@ -89,8 +89,12 @@
                             	on: {
                                     click: () => {
                                         this.showMessage(params.row)
-                                    }
-                                }
+                                    },
+                                },
+                                style: {
+                                    cursor: 'pointer',
+                                    color: 'red',
+                                },
                             },params.row.content);
                         }
                     },
@@ -116,7 +120,6 @@
                                     },
                                     on: {
                                         click: () => {
-                                        	//console.log(params.row)
                                             this.editThisMan(params.row)
                                         }
                                     }
@@ -221,10 +224,6 @@
 				this.changeItem = {
               		ID:info.ID,
               		content:info.content
-              		//name:info.name,
-              		//phone:info.phone,
-              		//eamil:info.eamil,
-              		//male:info.male,
               	}
 			},
 			changeOk (){
@@ -255,9 +254,10 @@
             	console.log(index)
             },
             onSelectionChange (selection){
-            	for(var i = 0;i< this.data4.length;i++){
-            		for(var j = 0;j< selection.length;j++){
-            			if(this.data1[i].name==selection[j].name){
+            	//console.log(selection)
+            	for(var i=0;i< this.data4.length;i++){
+            		for(var j=0;j< selection.length;j++){
+            			if(this.data4[i].name==selection[j].name){
             				console.log(i)
             			}
             		}
@@ -268,5 +268,5 @@
 </script>
 
 <style scoped="scoped">
-	/*.ivu-icon-ios-arrow-down{ bottom: auto !important;}*/
+	/*.ivu-icon-ios-arrow-down{ bottom: auto !important; cursor: pointer; }*/
 </style>
