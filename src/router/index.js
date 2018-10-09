@@ -19,6 +19,10 @@ import website from '@/components/shezhi/website'
 import userlist from '@/components/users/userlist'
 import roles from '@/components/users/roles'
 import administrators from '@/components/users/administrators'
+import repassword from '@/components/shezhi/repassword'
+import worklist from '@/components/workspace/worklist'
+import community from '@/components/workspace/community'
+import commentlist from '@/components/workspace/commentlist'
 Vue.use(Router)
 
 
@@ -154,6 +158,43 @@ export const commRouter = [
 	{
 		path:'/',
 		component:LayOut,
+		redirect:"/workspace",
+		meta:{
+			index:"13",
+			icon:"ios-people"
+		},
+		name:"应用",
+		children: [{
+	      path: '/worklist',
+	      component: worklist,
+	      name: '工单系统',
+	      meta:{
+	      	open:["13"],
+	      	index:"13-1",
+	      }
+	    },{
+	      path: '/community',
+	      component: community,
+	      name: '社区系统',
+	      meta:{
+	      	index:"14",
+	      },
+	      children:[
+	      		{
+		      		path: '/commentlist',
+			      	component: commentlist,
+			      	name: '回帖列表',
+			     	meta:{
+			      	open:['13',"14"],
+			      	index:"14-1",
+		      		}
+		    	} 	
+	      	]
+	    }]
+	},
+	{
+		path:'/',
+		component:LayOut,
 		redirect:"/set",
 		name:"设置",
 		meta:{
@@ -173,17 +214,18 @@ export const commRouter = [
 		      	{path: '/set/website',component: website, name: '网站设置',meta:{open:["9","10"],index:"10-1"}},
 		      ]
 	    },{
-			    path: '/set',
-			    component: set,
-			    name: '个人设置',
-			    redirect:"/set/userset",
-			    meta:{
-			      	index:"11",
-			      	icon:"md-home"
-			    },
-		      	children:[ 
-		      		{path: '/set/userset',component: userset, name: '修改资料',meta:{open:["9","11"],index:"11-1"}},
-		     	]
+		    path: '/set',
+		    component: set,
+		    name: '个人设置',
+		    redirect:"/set/userset",
+		    meta:{
+		      	index:"11",
+		      	icon:"md-home"
+		    },
+	      	children:[ 
+	      		{path: '/set/userset',component: userset, name: '修改资料',meta:{open:["9","11"],index:"11-1"}},
+	      		{path: '/set/repassword',component: repassword, name: '修改密码',meta:{open:["9","11"],index:"11-2"}},
+	     	]
 	    }]
 	}
   ]

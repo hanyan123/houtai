@@ -3,7 +3,7 @@
     <div class="layout">
         <Layout>
             <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
-                <Menu :open-names="opendName" :active-name="activeNames"  theme="dark" width="auto" :class="menuitemClasses">
+                <Menu :open-names="opendName" :active-name="activeNames"  theme="dark" width="auto" :class="menuitemClasses" accordion>
                     <Submenu v-for="item in permission_routers" :name="item.meta.index" v-if = "(!item.hidden ||　item.hidden!=true)&&item.children.length!=0">
                         <template slot="title">
                             <Icon :type="item.meta.icon"></Icon>
@@ -212,4 +212,5 @@
     .ivu-select-dropdown{ top: 50px !important;}
     .hiddenmenu{ display: none;}
     .userarrow{ bottom: 0 !important;}
+    .ivu-layout-sider,.ivu-menu{background: #20222A !important;}
 </style>

@@ -31,10 +31,14 @@ const tagsViews = {
 			commit('ADD_TAG_VIEWS',view)
 		},
 		delVisitedViews({commit,state},view){
-			return new Promise((resolve) => {
-		        commit('DEL_TAG', view)
-		        resolve([...state.visitedViews])
-		   	})
+			return new Promise (resolve =>{
+				commit('DEL_TAG',view)
+				resolve([...state.visitedViews])
+			})
+//			return new Promise((resolve) => {
+//		        commit('DEL_TAG', view)
+//		        resolve([...state.visitedViews])
+//		   	})
 		},
 	}
 }

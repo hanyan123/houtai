@@ -16,6 +16,7 @@
 		methods:{
 			getRoute(){
 				if(this.$route.name){
+					console.log(this.$route)
 					return this.$route
 				}
 				return false
