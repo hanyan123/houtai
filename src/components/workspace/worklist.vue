@@ -1,21 +1,22 @@
 <template>
 	<div style="padding-top: 20px;">
-		<Form :model="formItem" :label-width="80" title="我的资料" inline>
+		<Form :model="formItem" :label-width="80" title="工单列表" inline>
 	        <FormItem label="ID">
 	             <Input v-model="formItem.input1" style="width:200px" placeholder=""></Input>
 	        </FormItem>
-	        <FormItem label="用户名">
+	        <FormItem label="工单号">
 	             <Input v-model="formItem.input2" style="width:200px" placeholder=""></Input>
 	        </FormItem>
-	        <FormItem label="邮箱">
+	        <FormItem label="工单标题">
 	             <Input v-model="formItem.input3" style="width:200px" placeholder=""></Input>
 	        </FormItem>
-	        <FormItem label="性别">
-	            <RadioGroup v-model="formItem.radio">
-	                <Radio label="男">男</Radio>
-	                <Radio label="女">女</Radio>
-	            </RadioGroup>
+	        <FormItem label="业务性质">
+	             <Input v-model="formItem.input4" style="width:200px" placeholder=""></Input>
 	        </FormItem>
+	        <FormItem label="受理人">
+	             <Input v-model="formItem.input5" style="width:200px" placeholder=""></Input>
+	        </FormItem>
+	        
 	        <Button type="primary" icon="ios-search">Search</Button>
 		</Form>
 		<div class="tables">
@@ -28,30 +29,30 @@
 			</div>
 		</div>
 		<Modal
-	        title="Title"
+	        :title="Title"
 	        v-model="modalShow"
 	        :closable="false"
 	        @on-ok="changeOk"
 	        >
-	        <Form :model="formItem" :label-width="80" title="我的资料">
-		        <FormItem label="ID">
-		             <Input v-model="changeItem.ID" style="width:200px" placeholder=""></Input>
+	        <Form :model="changeItem" :label-width="80" title="编辑工单">
+		        <FormItem label="工单ID">
+		             <Input v-model="changeItem.wordID" style="width:200px" placeholder=""></Input>
 		        </FormItem>
-		        <FormItem label="用户名">
-		             <Input v-model="changeItem.name" style="width:200px" placeholder=""></Input>
+		        <FormItem label="工单性质">
+		             <Input v-model="changeItem.worktype" style="width:200px" placeholder=""></Input>
 		        </FormItem>
-		        <FormItem label="电话">
-		             <Input v-model="changeItem.phone" style="width:200px" placeholder=""></Input>
+		        <FormItem label="工单进度">
+		             <Input v-model="changeItem.progress" style="width:200px" placeholder=""></Input>
 		        </FormItem>
-		        <FormItem label="邮箱">
+		        <!--<FormItem label="邮箱">
 		             <Input v-model="changeItem.eamil" style="width:200px" placeholder=""></Input>
-		        </FormItem>
-		        <FormItem label="性别">
+		        </FormItem>-->
+		        <!--<FormItem label="性别">
 		            <Select v-model="changeItem.male" style="width:100px">
 				        <Option value="男" key="男">男</Option>
 				        <Option value="女" key="女">女</Option>
 				    </Select>
-		        </FormItem>
+		        </FormItem>-->
 			</Form>
 	    </Modal>
 	</div>
@@ -65,16 +66,16 @@
                     input2:'',
                     input1:'',
                     input3: '',
-                    radio: '',
+                    input4:'',
+                    input5:'',
               	},
               	changeItem:{
-              		ID:"",
-              		name:"",
-              		phone:"",
-              		eamil:"",
-              		male:"",
+              		wordID:"",
+              		worktype:"",
+              		progress:"",
+              		
               	},
-              	Title:"编辑用户",
+              	Title:"编辑工单",
               	modalShow:false,
               	columns2: [
               		{
@@ -82,46 +83,121 @@
                         width: 60,
                         align: 'center',
                         fixed: 'left'
-                   },
+                   	},
                     {
                         title: 'ID',
                         key: 'ID',
                         width:200
                     },
                     {
-                        title: '用户名',
-                        key: 'name',
+                        title: '工单号',
+                        key: 'wordID',
+                        width:200
+                    },
+                    
+                    {
+                        title: '业务性质',
+                        key: 'worktype',
                         width:200
                     },
                     {
-                        title: '头像',
-                        key: 'avatar',
+                        title: '工单标题',
+                        key: 'worktitle',
                         width:200
                     },
                     {
-                        title: '手机',
-                        key: 'phone',
+                        title: '进度',
+                        key: 'progress',
+                        width:200,
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Progress', {
+                                    props: {
+                                        type: 'primary',
+                                        size: 'small',
+                                        percent:params.row.progress
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.editThisMan(params.row)
+                                        }
+                                    }
+                                }),
+                            ]);
+                        }
+                    },
+                    {
+                        title: '提交者',
+                        key: 'severname',
                         width:200
                     },
                     {
-                        title: '邮箱',
-                        key: 'eamil',
+                        title: '受理人',
+                        key: 'acceptname',
                         width:200
                     },
                     {
-                        title: '性别',
-                        key: 'male',
-                        width:200
-                    },
-                    {
-                        title: 'IP',
-                        key: 'ip',
-                        width:200
-                    },
-                    {
-                        title: '加入时间',
-                        key: 'addtime',
-                        width:200
+                        title: '工单状态',
+                        key: 'status',
+                        width:200,
+                        render: (h, params) => {
+                        	if(params.row.status==0){
+                        		return h('div', [
+	                                h('Button', {
+	                                    props: {
+	                                        type: 'warning',
+	                                        size: 'small'
+	                                    },
+	                                    style: {
+	                                        marginRight: '5px'
+	                                    },
+	                                    on: {
+//	                                        click: () => {
+//	                                            this.editThisMan(params.row)
+//	                                        }
+	                                    }
+	                                }, '处理中'),
+	                            ]);
+                        	} else if(params.row.status==1) {
+                        		return h('div', [
+	                                h('Button', {
+	                                    props: {
+	                                        type: 'primary',
+	                                        size: 'small'
+	                                    },
+	                                    style: {
+	                                        marginRight: '5px'
+	                                    },
+	                                    on: {
+//	                                        click: () => {
+//	                                            this.editThisMan(params.row)
+//	                                        }
+	                                    }
+	                                }, '已完成'),
+	                            ]);
+                        	} else if(params.row.status==2) {
+                        		return h('div', [
+	                                h('Button', {
+	                                    props: {
+	                                        type: 'default',
+	                                        size: 'small'
+	                                    },
+	                                    style: {
+	                                        marginRight: '5px'
+	                                    },
+	                                    on: {
+//	                                        click: () => {
+//	                                            this.editThisMan(params.row)
+//	                                        }
+	                                    }
+	                                }, '未处理'),
+	                            ]);
+                        	}
+                            
+                        }
                     },
                     {
                         title: 'Action',
@@ -144,20 +220,6 @@
                                         }
                                     }
                                 }, '编辑'),
-                                h('Button', {
-                                    props: {
-                                        type: 'error',
-                                        size: 'small'
-                                    },
-                                    style: {
-                                        marginRight: '5px'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.deletThisMan(params.index)
-                                        }
-                                    }
-                                }, '删除')
                             ]);
                         }
                     }
@@ -165,142 +227,63 @@
                 data4: [
                     {
                     	ID:"01",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
+                        wordID: '1001',
+                        worktype: '公告',
+                        worktitle: '移动支付踏入马来西亚，聚合支付紧随其后',
+                        progress: 35,
+                        severname: '小刘',
+                        acceptname:"小美",
+                        status:0,
                     },
                     {
                     	ID:"02",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"女",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },{
+                        wordID: '1002',
+                        worktype: '讨论',
+                        worktitle: '凡科拖拽式免费建站神器，享双重优惠！',
+                        progress: 20,
+                        severname: '小刘',
+                        acceptname:"小美",
+                        status:2,
+                    },
+                    {
                     	ID:"03",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
+                        wordID: '1003',
+                        worktype: '提问',
+                        worktitle: 'DISCUZ的云平台应该彻底完了',
+                        progress: 35,
+                        severname: '小刘',
+                        acceptname:"小美",
+                        status:1,
                     },
                     {
                     	ID:"04",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
+                        wordID: '1004',
+                        worktype: '公告',
+                        worktitle: '移动支付踏入马来西亚，聚合支付紧随其后',
+                        progress: 35,
+                        severname: '小刘',
+                        acceptname:"小美",
+                        status:1,
                     },
                     {
                     	ID:"05",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
+                        wordID: '1005',
+                        worktype: '公告',
+                        worktitle: '移动支付踏入马来西亚，聚合支付紧随其后',
+                        progress: 35,
+                        severname: '小刘',
+                        acceptname:"小美",
+                        status:2,
                     },
                     {
                     	ID:"06",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"07",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"08",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"09",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"10",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"11",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"12",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"13",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"14",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
+                        wordID: '1006',
+                        worktype: '公告',
+                        worktitle: '移动支付踏入马来西亚，聚合支付紧随其后',
+                        progress: 35,
+                        severname: '小刘',
+                        acceptname:"小美",
+                        status:1,
                     },
                 ]
 			}
@@ -308,23 +291,18 @@
 		methods:{
 			editThisMan (info){
 				this.modalShow=true;
-				console.log(info.eamil)
 				this.changeItem = {
-              		ID:info.ID,
-              		name:info.name,
-              		phone:info.phone,
-              		eamil:info.eamil,
-              		male:info.male,
+              		wordID:info.wordID,
+              		worktype:info.worktype,
+              		progress:info.progress,
               	}
 			},
 			changeOk (){
 				for (let i = 0;i<this.data4.length;i++){
-					if(this.changeItem.ID==this.data4[i].ID){
-						this.data4[i].ID=this.changeItem.ID
-						this.data4[i].name=this.changeItem.name
-						this.data4[i].phone=this.changeItem.phone
-						this.data4[i].eamil=this.changeItem.eamil
-						this.data4[i].male=this.changeItem.male
+					if(this.changeItem.wordID==this.data4[i].wordID){
+						this.data4[i].wordID=this.changeItem.wordID
+						this.data4[i].worktype=this.changeItem.worktype
+						this.data4[i].progress=this.changeItem.progress
 					}
 				}
 			},

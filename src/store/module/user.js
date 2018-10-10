@@ -24,7 +24,8 @@ const user = {
 	actions:{
 		setUserInfo({ commit },token){
 			commit('SET_TOKEN',token)
-		},
+		},//{ commit } = store
+		
 		getUserInfo({ commit },data){
 			return new Promise((resolve, reject) => {
 	    		var url = "https://easy-mock.com/mock/5b84c7c9f7615d46c8184ae3/app/getinfo?name="+getToken()

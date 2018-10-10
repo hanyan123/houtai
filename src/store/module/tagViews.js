@@ -27,7 +27,7 @@ const tagsViews = {
 	},
 	actions:{
 		addVisitedViews({ commit },view){
-			console.log(view)
+			//console.log(view)
 			commit('ADD_TAG_VIEWS',view)
 		},
 		delVisitedViews({commit,state},view){

@@ -23,6 +23,8 @@ import repassword from '@/components/shezhi/repassword'
 import worklist from '@/components/workspace/worklist'
 import community from '@/components/workspace/community'
 import commentlist from '@/components/workspace/commentlist'
+import invitation from '@/components/workspace/invitation'
+
 Vue.use(Router)
 
 
@@ -188,7 +190,15 @@ export const commRouter = [
 			      	open:['13',"14"],
 			      	index:"14-1",
 		      		}
-		    	} 	
+		    	},{
+		      		path: '/invitation',
+			      	component: invitation,
+			      	name: '帖子列表',
+			     	meta:{
+			      	open:['13',"14"],
+			      	index:"14-2",
+		      		}
+		    	} 	 	
 	      	]
 	    }]
 	},
