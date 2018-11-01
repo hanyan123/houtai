@@ -4,10 +4,10 @@
 	        <FormItem label="ID">
 	             <Input v-model="formItem.input1" style="width:200px" placeholder=""></Input>
 	        </FormItem>
-	        <FormItem label="回帖人">
+	        <FormItem label="发帖人">
 	             <Input v-model="formItem.input2" style="width:200px" placeholder=""></Input>
 	        </FormItem>
-	        <FormItem label="回帖内容">
+	        <FormItem label="发帖内容">
 	             <Input v-model="formItem.input3" style="width:200px" placeholder=""></Input>
 	        </FormItem>        
 	        <Button type="primary" icon="ios-search">Search</Button>
@@ -20,7 +20,6 @@
 			<div style="padding: 20px;">
 				<Table @on-select="onSelect" @on-select-all="onSelectAll" @on-selection-change="onSelectionChange" ref="selection" height="600" border :columns="columns2" :data="data4" style="margin:0 auto ;"></Table>
 			</div>
-			<Page :total="100" show-total @on-change="shownum"/>
 		</div>
 		<Modal
 	        :title="Title"
@@ -28,9 +27,15 @@
 	        :closable="false"
 	        @on-ok="changeOk"
 	        >
-	        <Form :model="formItem" :label-width="80" title="我的资料">
+	        <Form :model="changeItem" :label-width="80" title="我的资料">
 		        <FormItem label="回帖内容" prop="desc">
 		            <Input v-model="changeItem.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder=""></Input>
+		        </FormItem>
+		        <FormItem label="置顶" prop="zhiding" >
+		            <i-switch size="large" @on-change="changeStatus" v-model="changeItem.zhiding">
+				        <span slot="open">ON</span>
+				        <span slot="close">OFF</span>
+				    </i-switch>
 		        </FormItem>
 			</Form>
 	    </Modal>
@@ -49,7 +54,8 @@
               	},
               	changeItem:{
               		ID:"",
-              		content:""
+              		content:"",
+              		zhiding:false
               	},
               	Title:"编辑内容",
               	modalShow:false,
@@ -59,14 +65,14 @@
                         width: 60,
                         align: 'center',
                         fixed: 'left'
-                   },
+                    },
                     {
                         title: 'ID',
                         key: 'ID',
                         width:200
                     },
                     {
-                        title: '回帖人',
+                        title: '发帖人',
                         key: 'name',
                         width:200
                     },
@@ -76,16 +82,16 @@
                         width:200
                     },
                     {
-                        title: '回帖ID',
-                        key: 'commentID',
+                    	title:'帖子标题',
+                    	key: 'contenttitle',
                         width:200,
-                        sortable: true
                     },
                     {
                         title: '回帖内容',
                         key: 'content',
                         width:200,
                         render: (h, params) => {
+                        	
                             return h('span',{
                             	on: {
                                     click: () => {
@@ -100,9 +106,52 @@
                         }
                     },
                     {
-                        title: '回帖时间',
+                        title: '发帖时间',
                         key: 'addtime',
                         width:200
+                    },
+                    {
+                        title: '置顶操作',
+                        key: 'settop',
+                        width:200,
+                        render: (h, params) => {
+                        	if(!params.row.settop){
+                        		return h('div', [
+	                                h('Button', {
+	                                    props: {
+	                                        type: 'default',
+	                                        size: 'small'
+	                                    },
+	                                    style: {
+	                                        marginRight: '5px'
+	                                    },
+	                                    on: {
+	//                                      click: () => {
+	//                                          this.editThisMan(params.row)
+	//                                      }
+	                                    }
+	                                }, '正常显示')
+	                            ]);
+                        	} else {
+                        		return h('div', [
+	                                h('Button', {
+	                                    props: {
+	                                        type: 'primary',
+	                                        size: 'small'
+	                                    },
+	                                    style: {
+	                                        marginRight: '5px'
+	                                    },
+	                                    on: {
+	//                                      click: () => {
+	//                                          this.editThisMan(params.row)
+	//                                      }
+	                                    }
+	                                }, '置顶')
+	                            ]);
+                        	}
+                            
+                        }
                     },
                     {
                         title: 'Action',
@@ -145,98 +194,120 @@
                 ],
                 data4: [
                     {
-                    	ID:"01",
+                    	ID:"1001",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1001',
+                        contenttitle:"世界有多大",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:true
                     },
                     {
-                    	ID:"02",
+                    	ID:"1002",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1002',
+                        contenttitle:"世界有多大1",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:false
                     },
                     {
-                    	ID:"03",
+                    	ID:"1003",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1003',
+                        contenttitle:"世界有多大",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:true
                     },
                     {
-                    	ID:"04",
+                    	ID:"1004",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1004',
+                        contenttitle:"世界有多大1",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:false
                     },
                     {
-                    	ID:"05",
+                    	ID:"1005",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1005',
+                        contenttitle:"世界有多大",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:true
                     },
                     {
-                    	ID:"06",
+                    	ID:"1006",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1006',
+                        contenttitle:"世界有多大1",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:false
                     },
                     {
-                    	ID:"07",
+                    	ID:"1007",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1007',
+                        contenttitle:"世界有多大",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:true
                     },
                     {
-                    	ID:"08",
+                    	ID:"1008",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1008',
+                        contenttitle:"世界有多大1",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:false
                     },
                     {
-                    	ID:"09",
+                    	ID:"1009",
                         name: '小碟',
                         avatar: '/image/aaa/bbb',
-                        commentID: '1009',
+                        contenttitle:"世界有多大",
                         content:"呵呵，这世界有多大，我想去走走",
                         addtime: '2018-09-02 12:05',
+                        settop:true
+                    },
+                    {
+                    	ID:"1010",
+                        name: '小碟',
+                        avatar: '/image/aaa/bbb',
+                        contenttitle:"世界有多大1",
+                        content:"呵呵，这世界有多大，我想去走走",
+                        addtime: '2018-09-02 12:05',
+                        settop:false
                     },
                 ]
 			}
 		},
 		methods:{
+			changeStatus (status){
+				this.changeItem.zhiding=status;
+			},
 			editThisMan (info){
 				this.modalShow=true;
 				this.changeItem = {
               		ID:info.ID,
-              		content:info.content
+              		content:info.content,
+              		zhiding:info.settop
               	}
+				console.log(this.changeItem)
 			},
 			changeOk (){
+				console.log(this.changeItem)
 				for (let i = 0;i<this.data4.length;i++){
 					if(this.changeItem.ID==this.data4[i].ID){
 						this.data4[i].ID=this.changeItem.ID
 						this.data4[i].content=this.changeItem.content
+						this.data4[i].settop=this.changeItem.zhiding
 					}
 				}
-			},
-			shownum (page){
-				console.log(page)
 			},
 			deletThisMan (index){
 				this.data4.splice(index, 1);

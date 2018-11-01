@@ -72,7 +72,7 @@
               	changeItem:{
               		wordID:"",
               		worktype:"",
-              		progress:"",
+              		progress:0,
               		
               	},
               	Title:"编辑工单",
@@ -294,7 +294,7 @@
 				this.changeItem = {
               		wordID:info.wordID,
               		worktype:info.worktype,
-              		progress:info.progress,
+              		progress:parseFloat(info.progress),
               	}
 			},
 			changeOk (){
@@ -302,7 +302,7 @@
 					if(this.changeItem.wordID==this.data4[i].wordID){
 						this.data4[i].wordID=this.changeItem.wordID
 						this.data4[i].worktype=this.changeItem.worktype
-						this.data4[i].progress=this.changeItem.progress
+						this.data4[i].progress=parseFloat(this.changeItem.progress)
 					}
 				}
 			},

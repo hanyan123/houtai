@@ -20,7 +20,6 @@
 			<div style="padding: 20px;">
 				<Table @on-select="onSelect" @on-select-all="onSelectAll" @on-selection-change="onSelectionChange" ref="selection" height="600" border :columns="columns2" :data="data4" style="margin:0 auto ;"></Table>
 			</div>
-			<Page :total="100" show-total @on-change="shownum"/>
 		</div>
 		<Modal
 	        :title="Title"
@@ -234,9 +233,6 @@
 						this.data4[i].content=this.changeItem.content
 					}
 				}
-			},
-			shownum (page){
-				console.log(page)
 			},
 			deletThisMan (index){
 				this.data4.splice(index, 1);

@@ -24,6 +24,9 @@ import worklist from '@/components/workspace/worklist'
 import community from '@/components/workspace/community'
 import commentlist from '@/components/workspace/commentlist'
 import invitation from '@/components/workspace/invitation'
+import content from '@/components/workspace/content'
+import contentlist from '@/components/workspace/contentlist'
+import contentcomment from '@/components/workspace/contentcomment'
 
 Vue.use(Router)
 
@@ -197,6 +200,32 @@ export const commRouter = [
 			     	meta:{
 			      	open:['13',"14"],
 			      	index:"14-2",
+		      		}
+		    	} 	 	
+	      	]
+	    },{
+	      path: '/content',
+	      component: content,
+	      name: '内容系统',
+	      meta:{
+	      	index:"15",
+	      },
+	      children:[
+	      		{
+		      		path: '/contentlist',
+			      	component: contentlist,
+			      	name: '文章列表',
+			     	meta:{
+			      	open:['13',"15"],
+			      	index:"15-1",
+		      		}
+		    	},{
+		      		path: '/contentcomment',
+			      	component: contentcomment,
+			      	name: '文章评论',
+			     	meta:{
+			      	open:['13',"15"],
+			      	index:"15-2",
 		      		}
 		    	} 	 	
 	      	]

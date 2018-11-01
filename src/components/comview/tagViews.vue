@@ -28,10 +28,7 @@
 				} 
 				this.$store.dispatch('addVisitedViews',route)
 			},
-			changeBar(){
-				this.isCollapse = !this.isCollapse;
-				this.$store.dispatch('changeLeftBar',this.isCollapse)
-			},
+
 			isActive(route) {
 		      return route.path === this.$route.path
 		    },

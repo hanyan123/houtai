@@ -76,9 +76,9 @@
         	tagviews
         },
         computed: {
-        		...mapGetters([
-				      'permission_routers',//this.$store.getters.permission_routers
-				    ]),
+    		...mapGetters([
+			      'permission_routers',//this.$store.getters.permission_routers
+			    ]),
             rotateIcon () {
                 return [
                     'menu-icon',
@@ -131,7 +131,7 @@
             }
         },
         created (){
-        		this.getRouters()
+        	this.getRouters()
         }
     }
 </script>
