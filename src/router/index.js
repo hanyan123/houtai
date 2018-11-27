@@ -27,7 +27,9 @@ import invitation from '@/components/workspace/invitation'
 import content from '@/components/workspace/content'
 import contentlist from '@/components/workspace/contentlist'
 import contentcomment from '@/components/workspace/contentcomment'
-
+import template from '@/components/template/template'
+import addresslist from '@/components/template/comps/addresslist'
+import caller from '@/components/template/comps/caller'
 Vue.use(Router)
 
 
@@ -266,7 +268,33 @@ export const commRouter = [
 	      		{path: '/set/repassword',component: repassword, name: '修改密码',meta:{open:["9","11"],index:"11-2"}},
 	     	]
 	    }]
-	}
+	},
+	{
+		path:'/',
+		component:LayOut,
+		redirect:"/template/addresslist",
+		name:"页面",
+		meta:{
+			index:"16",
+			icon:"ios-thunderstorm"
+		},
+		children: [
+			{
+		      	path: '/template/addresslist',
+		      	component: addresslist,
+		      	name: '通讯录',
+		      	meta:{index:"16-1",open:["16"]},
+
+		    },
+		    {
+		      	path: '/template/caller',
+		      	component: caller,
+		      	name: '留言板',
+		      	meta:{index:"16-2",open:["16"]},
+
+	    	}
+		]
+	},
   ]
 
 export const pemissionRouter = [
@@ -276,7 +304,8 @@ export const pemissionRouter = [
 		redirect:"/admin",
 		meta:{
 			index:"3",
-			icon:"md-trophy"
+			icon:"md-trophy",
+			roles: ['admin'],
 		},
 		name:"超级管理员",
 		children: [{
@@ -311,7 +340,8 @@ export const pemissionRouter = [
 		redirect:"/editor",
 		meta:{
 			index:"4",
-			icon:"logo-usd"
+			icon:"logo-usd",
+			roles: ['admin','editor'],
 		},
 		name:"小管理员",
 		children: [{
@@ -326,7 +356,7 @@ export const pemissionRouter = [
 	      }
 	    }]
 	},
-	//{ path: '*', redirect: '/404', hidden: true }
+	{ path: '*', redirect: '/404', hidden: true }
   ]
 
 

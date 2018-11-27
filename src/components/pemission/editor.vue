@@ -7,7 +7,7 @@
             <Input v-model="formValidate.mail" placeholder="Enter your e-mail"></Input>
         </FormItem>
         <FormItem label="City" prop="city">
-            <Select v-model="formValidate.city" placeholder="Select your city">
+            <Select v-model="formValidate.city" placeholder="请选择城市">
                 <Option value="beijing">New York</Option>
                 <Option value="shanghai">London</Option>
                 <Option value="shenzhen">Sydney</Option>
