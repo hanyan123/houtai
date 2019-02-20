@@ -91,9 +91,6 @@
 </script>
 <style>
 	.ivu-icon-ios-arrow-down{ bottom: auto;}
-	.ivu-layout-content{
-		/*margin: 0 !important;*/
-	}
 	.layui-card-header{
 		position: relative;
     height: 42px;

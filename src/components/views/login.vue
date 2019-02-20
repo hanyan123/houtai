@@ -6,6 +6,7 @@
 			<div class="login-inp"><label>密码</label><input v-model="passWord" type="password" placeholder=""></div>
 			<div class="login-inp"><a href="javascript:;" @click="userLogin">立即登录</a></div>
 		</div>
+		{{userinfo}}
 		<div class="login-txt"><a href="#">立即注册</a>|<a href="#">忘记密码？</a></div>
 	</div>
 </template>
@@ -43,7 +44,12 @@
 				　　  alert(error);
 				});
 	    	}
-	    }
+	   },
+	   computed:{
+	   		userinfo (){
+	   			return this.userName
+	   		}
+	   }
 	}
 </script>
 

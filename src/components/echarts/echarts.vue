@@ -5,7 +5,7 @@
 <script>
 	import resize from './resize'
 	export default {
-		mixins: [resize],
+			mixins: [resize],
 	  	props:{
 		  	ids:{
 		  		type:String
@@ -22,16 +22,17 @@
 		      	chart:null
 		    }
 		},
-	  mounted(){
+	  created(){
 	  	let _self = this
-	  	setTimeout(function (){
+	  	setTimeout(()=>{
+			console.log(this.styles)
 	  		_self.drawLine();
-	  	},0)
+	  	},100)
 	  },
 	  methods: {
 	    drawLine(){
 	        this.chart = this.$echarts.init(document.getElementById(this.ids))
-	        this.chart.setOption(this.options)
+			this.chart.setOption(this.options)
 	    }
 	  }
 	}

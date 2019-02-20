@@ -11,5 +11,8 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.__resizeHanlder)
+  },
+  created(){
+    window.removeEventListener('resize', this.__resizeHanlder)
   }
 }

@@ -30,6 +30,7 @@ import contentcomment from '@/components/workspace/contentcomment'
 import template from '@/components/template/template'
 import addresslist from '@/components/template/comps/addresslist'
 import caller from '@/components/template/comps/caller'
+import charts2 from '@/components/echarts/charts2'
 Vue.use(Router)
 
 
@@ -63,17 +64,27 @@ export const commRouter = [
 			index:"2",
 			icon:"md-text"
 		},
-		name:"图表",
+		name:"主页",
 		children: [{
 	      path: '/charts',
 	      component: charts,
-	      name: '图表',
+	      name: '主页一',
 	      meta:{
 	      	open:["2"],
 	      	index:"2-1",
 	      	icon:"md-home"
 	      }
-	    }]
+		},
+		{
+			path: '/charts2',
+			component: charts2,
+			name: '主页二',
+			meta:{
+				open:["2"],
+				index:"2-2",
+				icon:"md-home"
+			}
+		  }]
 	},
 	{
 		path:'/',
@@ -361,5 +372,6 @@ export const pemissionRouter = [
 
 
 export default new Router({
-  routes: commRouter
+	//mode:'history',
+  	routes: commRouter
 })

@@ -1,204 +1,341 @@
 <template>
-	<div>
-		<echarts :options="options" :ids="id" :styles="styles"></echarts>
-		<Row style="background:#eee;padding:20px">
-	        <Col span="11">
-	            <Card :bordered="false">
-	                <p slot="title">今日待办事项</p>
-	                <echarts :options="options1" :ids="id1" :styles="styles1"></echarts>
-	            </Card>
-	        </Col>
-	        <Col span="11" offset="2">
-	            <Card shadow>
-	                <p slot="title">明天安排事项</p>
-	               	<echarts :options="options2" :ids="id2" :styles="styles2"></echarts>
-	            </Card>
-	        </Col>
-	    </Row>
+	<div style="background: rgb(245, 247, 249);">
+		<Row :gutter="16">
+			<Col span="16">
+				<div>
+					<Card :bordered="false">
+						<p slot="title">最近更新</p>
+						<div>
+							<Row>
+								<Col span="8" style="padding:5px">
+									<div  style="padding:16px; background:#f8f8f8">
+										<div class="title">
+											flow
+										</div>
+										<p class="text">
+											修复开启isLazyimg:true后, 图片懒加载但是图片不存在的报错问题
+										</p>
+										<p class="times">
+											<span class="types">流加载</span>
+											<span class="time">7天前</span>
+										</p>
+									</div>
+								</Col>
+								<Col span="8" style="padding:5px">
+									<div  style="padding:16px; background:#f8f8f8">
+										<div class="title">
+											flow
+										</div>
+										<p class="text">
+											修复开启isLazyimg:true后, 图片懒加载但是图片不存在的报错问题
+										</p>
+										<p class="times">
+											<span class="types">流加载</span>
+											<span class="time">7天前</span>
+										</p>
+									</div>
+								</Col>
+								<Col span="8" style="padding:5px">
+									<div  style="padding:16px; background:#f8f8f8">
+										<div class="title">
+											flow
+										</div>
+										<p class="text">
+											修复开启isLazyimg:true后, 图片懒加载但是图片不存在的报错问题
+										</p>
+										<p class="times">
+											<span class="types">流加载</span>
+											<span class="time">7天前</span>
+										</p>
+									</div>
+								</Col>
+								<Col span="8" style="padding:5px">
+									<div  style="padding:16px; background:#f8f8f8">
+										<div class="title">
+											flow
+										</div>
+										<p class="text">
+											修复开启isLazyimg:true后, 图片懒加载但是图片不存在的报错问题
+										</p>
+										<p class="times">
+											<span class="types">流加载</span>
+											<span class="time">7天前</span>
+										</p>
+									</div>
+								</Col>
+								<Col span="8" style="padding:5px">
+									<div  style="padding:16px; background:#f8f8f8">
+										<div class="title">
+											flow
+										</div>
+										<p class="text">
+											修复开启isLazyimg:true后, 图片懒加载但是图片不存在的报错问题
+										</p>
+										<p class="times">
+											<span class="types">流加载</span>
+											<span class="time">7天前</span>
+										</p>
+									</div>
+								</Col>
+								<Col span="8" style="padding:5px">
+									<div  style="padding:16px; background:#f8f8f8">
+										<div class="title">
+											flow
+										</div>
+										<p class="text">
+											修复开启isLazyimg:true后, 图片懒加载但是图片不存在的报错问题
+										</p>
+										<p class="times">
+											<span class="types">流加载</span>
+											<span class="time">7天前</span>
+										</p>
+									</div>
+								</Col>
+							</Row>
+						</div>
+					</Card>	
+				</div>
+				<div class="dynamic" style="margin-top:16px">
+					<Card :bordered="false">
+						<p slot="title">动态</p>
+						<div class="comments">
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+							<div class="comments-list">
+								<div class="comments-head">
+									<img src="../../assets/logo.png">
+								</div>
+								<div class="comments-item">
+									<p class="whois">胡歌 在 <span>layuiadmin专区</span> 回答问题</p>
+									<p class="linetime">5秒前</p>
+								</div>
+							</div>
+						</div>
+					</Card>
+				</div>
+			</Col>
+			<Col span="8">
+				<Card :bordered="false">
+					<p slot="title">快速开始/便捷导航</p>
+					<div class="actions">
+						<Row>
+							<Col span="6"><span class="actionitems" style="">操作一</span></Col>
+							<Col span="6"><span class="actionitems" style="">操作一</span></Col>
+							<Col span="6"><span class="actionitems" style="">操作一</span></Col>
+							<Col span="6"><span class="actionitems" style="">操作一</span></Col>
+							<Col span="6"><span class="actionitems" style="">操作一</span></Col>
+							<Col span="6"><span class="actionitems" style="">操作一</span></Col>
+						</Row>
+					</div>
+				</Card>
+				<Card :bordered="false">
+					<p slot="title">能力分析</p>
+					<div class="radar-box">
+						<echarts :ids="id" :styles="styles4" :options="option"></echarts>
+					</div>
+				</Card>
+			</Col>
+		</Row>
 	</div>
 </template>
 
 <script>
 	import echarts from './echarts'
-	
 	export default {
-		data(){
-			return {
-				id:"main",
-				id1:"chart",
-				id2:"chart1",
-				options:{
-					title: {
-				        text: '折线图堆叠'
-				    },
-				    tooltip: {
-				        trigger: 'axis'
-				    },
-				    legend: {
-				        data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-				    },
-				    grid: {
-				        left: '3%',
-				        right: '4%',
-				        bottom: '3%',
-				        containLabel: true
-				    },
-				    toolbox: {
-				        feature: {
-				            saveAsImage: {}
-				        }
-				    },
-				    xAxis: {
-				        type: 'category',
-				        boundaryGap: false,
-				        data: ['周一','周二','周三','周四','周五','周六','周日']
-				    },
-				    yAxis: {
-				        type: 'value'
-				    },
-				    series: [
-				        {
-				            name:'邮件营销',
-				            type:'line',
-				            stack: '总量',
-				            data:[120, 132, 101, 134, 90, 230, 210]
-				        },
-				        {
-				            name:'联盟广告',
-				            type:'line',
-				            stack: '总量',
-				            data:[220, 182, 191, 234, 290, 330, 310]
-				        },
-				        {
-				            name:'视频广告',
-				            type:'line',
-				            stack: '总量',
-				            data:[150, 232, 201, 154, 190, 330, 410]
-				        },
-				        {
-				            name:'直接访问',
-				            type:'line',
-				            stack: '总量',
-				            data:[320, 332, 301, 334, 390, 330, 320]
-				        },
-				        {
-				            name:'搜索引擎',
-				            type:'line',
-				            stack: '总量',
-				            data:[820, 932, 901, 934, 1290, 1330, 1320]
-				        }
-				    ]
-				},
-				options1:{
-				 	tooltip: {
-				        trigger: 'item',
-				        formatter: "{a} <br/>{b}: {c} ({d}%)"
-				    },
-				    legend: {
-				        orient: 'vertical',
-				        x: 'left',
-				        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-				    },
-				    series: [
-				        {
-				            name:'访问来源',
-				            type:'pie',
-				            radius: ['50%', '70%'],
-				            avoidLabelOverlap: false,
-				            label: {
-				                normal: {
-				                    show: false,
-				                    position: 'center'
-				                },
-				                emphasis: {
-				                    show: true,
-				                    textStyle: {
-				                        fontSize: '30',
-				                        fontWeight: 'bold'
-				                    }
-				                }
-				            },
-				            labelLine: {
-				                normal: {
-				                    show: false
-				                }
-				            },
-				            data:[
-				                {value:335, name:'直接访问'},
-				                {value:310, name:'邮件营销'},
-				                {value:234, name:'联盟广告'},
-				                {value:135, name:'视频广告'},
-				                {value:1548, name:'搜索引擎'}
-				            ]
-				        }
-				    ]
-				},
-				options2:{
-				 	tooltip: {
-				        trigger: 'item',
-				        formatter: "{a} <br/>{b}: {c} ({d}%)"
-				    },
-				    legend: {
-				        orient: 'vertical',
-				        x: 'left',
-				        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-				    },
-				    series: [
-				        {
-				            name:'访问来源',
-				            type:'pie',
-				            radius: ['50%', '70%'],
-				            avoidLabelOverlap: false,
-				            label: {
-				                normal: {
-				                    show: false,
-				                    position: 'center'
-				                },
-				                emphasis: {
-				                    show: true,
-				                    textStyle: {
-				                        fontSize: '30',
-				                        fontWeight: 'bold'
-				                    }
-				                }
-				            },
-				            labelLine: {
-				                normal: {
-				                    show: false
-				                }
-				            },
-				            data:[
-				                {value:335, name:'直接访问'},
-				                {value:310, name:'邮件营销'},
-				                {value:234, name:'联盟广告'},
-				                {value:135, name:'视频广告'},
-				                {value:1548, name:'搜索引擎'}
-				            ]
-				        }
-				    ]
-				},
-				styles:{
-					'height':'400px',
-					'width':'100%'
-				},
-				styles1:{
-					'height':'400px',
-					'width':'400px'
-				},
-				styles2:{
-					'height':'400px',
-					'width':'400px'
-				}
-			}
-		},
 		components:{
 			echarts
 		},
-		methods:{
-			
-		}
+		data(){
+			return {
+				styles4:{
+					height:'350px'
+				},
+				id:"radars",
+				option:{
+					tooltip : {
+						trigger: 'item'
+					},
+					legend: {
+						data: ['姚明']
+					},
+					
+					radar :{
+						indicator: [
+							{ text: '进攻', max: 100 },
+							{ text: '防守', max: 100 },
+							{ text: '速度', max: 100 },
+							{ text: '反应', max: 100 },
+							{ text: '综合', max: 100 },
+						],
+						center: ['50%', '50%'],
+						radius: 120
+					},
+					series: [
+						{
+							name: '成绩单',
+							type: 'radar',
+							//symbol: 'emptyCircle',
+							//symbolSize: 5,
+							lineStyle: {
+								width:2,
+								color:'#ff7319',
+							},
+							itemStyle: {//拐点样式
+								normal:{
+									color:'#ffffff',
+									borderWidth:6,
+									borderType:'dashed',
+									shadowColor: 'red',
+									shadowBlur: 10,
+									opacity:1
+								},
+								emphasis:{
+									color:'red',
+									borderWidth:10
+								},
+								areaStyle: {
+									normal: {
+										opacity: 100,
+										color:'red'
+									}
+								}
+								
+							},
+							data: [
+								// {
+								// 	value: [80, 90, 95, 70, 62],
+								// 	name: '雷傲',
+								// 	// label: {//拐角处的数字
+								// 	// 	normal: {
+								// 	// 		show: true,
+								// 	// 		formatter:function(params) {
+								// 	// 			return params.value;
+								// 	// 		}
+								// 	// 	}
+								// 	// }
+								// 	areaStyle: {
+								// 		normal: {
+								// 			opacity: 0.5,
+								// 			color:'#01AAED',
+								// 			borderColor: '#289df5'
+								// 		}
+								// 	}
+								// },
+								{
+									value: [90, 96, 72, 80, 85],
+									name: '姚明',
+									areaStyle: {//填充样式
+										normal: {
+											opacity: 0.5,
+											color:'#009688',
+											//borderColor: '#009688'
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		}	
 	}
 </script>
 
-<style>
+<style scoped>
+.comments-list{ overflow: hidden;padding: 15px 0;
+    border-bottom: 1px solid #EEE;}
+.whois{ color:#333333 ;line-height: 1.6;}
+.comments-head{height: 32px;width: 32px; border-radius: 50%; overflow: hidden; float: left; margin-right: 10px}
+.comments-item{ overflow: hidden;}
+.whois{ color:#333333 ;line-height: 1.6; }
+.whois span{ color:#01AAED }
+.linetime{
+	color:#BBB
+}
+.comments-head img{ display: block; width: 100%; height: 100%}
+.actionitems{
+display:block; color: #666;font-size: 14px;margin-bottom: 12px; cursor: pointer;
+}
+.actionitems:hover{
+	color: #01AAED
+}
+.title{
+line-height: 24px;
+    font-size: 16px;
+    vertical-align: top;
+	color: #333333
+}
+.text{
+	height: 44px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.times{
+	overflow: hidden;
+}
+.types{
+	color: #777;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+	float: left;
+}
+.time{
+	color: #CCC;
+    font-size: 12px;
+    float: right;
+}
 </style>

@@ -82,6 +82,7 @@
 			   	<Button type="primary" size="large" @click="addOk">确定</Button>
 			</div>
 	    </Modal>
+        <Spin size="large" fix v-if="spinShow"></Spin>
 	</div>
 </template>
 
@@ -89,6 +90,7 @@
 	export default {
 		data (){
 			return {
+                spinShow:true,
 				formItem: {
                     input2:'',
                     input1:'',
@@ -264,132 +266,132 @@
                     }
                 ],
                 data4: [
-                    {
-                    	ID:"01",
-                        name: 'admin',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'超级管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"02",
-                        name: 'common-01',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:"管理员",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },{
-                    	ID:"03",
-                        name: 'common-02',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"04",
-                        name: 'common-03',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"05",
-                        name: 'common-04',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"06",
-                        name: 'common-05',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"07",
-                        name: 'common-06',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"08",
-                        name: 'common-07',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"09",
-                        name: 'common-08',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"10",
-                        name: 'common-09',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"11",
-                        name: 'common-10',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"12",
-                        name: 'common-11',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"13",
-                        name: 'common-12',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"14",
-                        name: 'editor',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        role:'管理员',
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                ]
+				{
+					ID:"01",
+					name: 'admin',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'超级管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"02",
+					name: 'common-01',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:"管理员",
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},{
+					ID:"03",
+					name: 'common-02',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"04",
+					name: 'common-03',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"05",
+					name: 'common-04',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"06",
+					name: 'common-05',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"07",
+					name: 'common-06',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"08",
+					name: 'common-07',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"09",
+					name: 'common-08',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"10",
+					name: 'common-09',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"11",
+					name: 'common-10',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"12",
+					name: 'common-11',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"13",
+					name: 'common-12',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+				{
+					ID:"14",
+					name: 'editor',
+					phone: '13666666666',
+					eamil: '192224565@qq.com',
+					role:'管理员',
+					ip:"192.168.1.1",
+					addtime: '2018-09-02 12:05',
+				},
+			]
 			}
 		},
 		methods:{
@@ -439,7 +441,20 @@
             handleAdd (){
             	this.modalShow1=true
             },
-            
+//             getRolesrList(){
+// 	    		//Loading.service({ fullscreen: true });
+// 				var _self = this;
+// 				var params = new URLSearchParams();
+// 				params.append('name', _self.userName);
+// 				var url = "/api/roleslist"
+// 				_self.axios.get(url,{emulateJSON : true  //这行最关键。题外话：我们是选项体，也就是文档里的[options]
+// }).then((response)=> {
+//                     _self.spinShow = false;
+//                     _self.data4=response.data
+// 				}).catch(function (error) {
+// 				　　alert(error);
+// 				});
+// 	    	},
             handleDelet (){
             	let _self = this
             	if (_self.selecttions.length==0){
@@ -476,7 +491,14 @@
 //          		}
 //          	}
             }
-		}
+        },
+        created(){
+            setTimeout(() => {
+				this.spinShow=false
+                //this.getRolesrList()
+            }, 1000);
+            
+        }
 	}
 </script>
 

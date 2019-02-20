@@ -61,7 +61,7 @@
 		},
 		computed:{
 			visitedViews(){
-				console.log(this.$store.getters.visitedViews)
+				//console.log(this.$store.getters.visitedViews)
 				return this.$store.getters.visitedViews
 			},
 			location(){

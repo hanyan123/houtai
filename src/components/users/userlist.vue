@@ -1,5 +1,5 @@
 <template>
-	<div style="padding-top: 20px;">
+	<div style="padding-top: 20px; position:relative">
 		<Form :model="formItem" :label-width="80" title="我的资料" inline>
 	        <FormItem label="ID">
 	             <Input v-model="formItem.input1" style="width:200px" placeholder=""></Input>
@@ -54,6 +54,7 @@
 		        </FormItem>
 			</Form>
 	    </Modal>
+        <Spin size="large" fix v-if="spinShow"></Spin>
 	</div>
 </template>
 
@@ -61,6 +62,7 @@
 	export default {
 		data (){
 			return {
+                spinShow:true,
 				formItem: {
                     input2:'',
                     input1:'',
@@ -162,147 +164,147 @@
                         }
                     }
                 ],
-                data4: [
-                    {
-                    	ID:"01",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"02",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"女",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },{
-                    	ID:"03",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"04",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"05",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"06",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"07",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"08",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"09",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"10",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"11",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"12",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"13",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                    {
-                    	ID:"14",
-                        name: '小碟',
-                        avatar: '/image/aaa/bbb',
-                        phone: '13666666666',
-                        eamil: '192224565@qq.com',
-                        male:"男",
-                        ip:"192.168.1.1",
-                        addtime: '2018-09-02 12:05',
-                    },
-                ]
+                data4:  [
+					{
+						ID:"01",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"02",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"女",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},{
+						ID:"03",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"04",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"05",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"06",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"07",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"08",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"09",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"10",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"11",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"12",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"13",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+					{
+						ID:"14",
+						name: '小碟',
+						avatar: '/image/aaa/bbb',
+						phone: '13666666666',
+						eamil: '192224565@qq.com',
+						male:"男",
+						ip:"192.168.1.1",
+						addtime: '2018-09-02 12:05',
+					},
+				]
 			}
 		},
 		methods:{
@@ -327,7 +329,22 @@
 						this.data4[i].male=this.changeItem.male
 					}
 				}
-			},
+            },
+            getUserList(){
+	    		//Loading.service({ fullscreen: true });
+				var _self = this;
+				var params = new URLSearchParams();
+				params.append('name', _self.userName);
+				var url = "/api/userlist"
+				_self.axios.get(url,{emulateJSON : true  //这行最关键。题外话：我们是选项体，也就是文档里的[options]
+}).then((response)=> {
+                    _self.spinShow = false;
+                    _self.data4=response.data
+					//console.log(response)
+				}).catch(function (error) {
+				　　alert(error);
+				});
+	    	},
 			deletThisMan (index){
 				this.data4.splice(index, 1);
 			},
@@ -353,10 +370,22 @@
             		}
             	}
             }
-		}
+        },
+        created(){
+            setTimeout(()=>{
+				this.spinShow=false
+               // this.getUserList()
+            },1000)
+            
+        }
 	}
 </script>
 
 <style scoped="scoped">
 	/*.ivu-icon-ios-arrow-down{ bottom: auto !important;}*/
+    /* .ivu-spin{
+        position: absolute;
+        top: 50%;
+        left: 50%
+    } */
 </style>

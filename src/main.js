@@ -10,6 +10,7 @@ import iView from 'iview';
 import { getToken, setToken, removeToken } from '@/unit/auth'
 import store from './store'
 import 'iview/dist/styles/iview.css'
+import plugin from '../plugin'
 //https://www.cnblogs.com/Smiled/p/7686316.html
 import echarts from 'echarts'
 //https://github.com/hinesboy/mavonEditor markdown编辑器
@@ -25,7 +26,7 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
-
+Vue.use(plugin)
 Vue.use(VueQuillEditor, /* { default global options } */)
 Vue.prototype.$echarts = echarts
 
@@ -55,8 +56,6 @@ router.beforeEach((to, from, next) => {
 						if(store.getters.roles.length==0){
 								store.dispatch('getUserInfo').then(res => { // 拉取user_info
 						          const roles = res.data.roles // note: roles must be a array! such as: ['editor','develop']
-						          //console.log(roles)
-						          //console.log(JSON.stringify(roles))
 						          //{ roles }相当于{ roles:roles }
 						          store.dispatch('GenerateRoutes', { roles:roles }).then(() => { // 根据roles权限生成可访问的路由表
 						            router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表

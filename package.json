@@ -7,12 +7,16 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+	"server":"node ./server/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "echarts": "^4.1.0",
+    "echarts": "^4.2.0-rc.2",
     "iview": "^3.1.0",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
     "mavon-editor": "^2.6.17",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.3",
